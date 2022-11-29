@@ -85,18 +85,20 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
+- Install ruby, sqlite (For rails to work) then
 ```
-- Install ruby, sqlite (For rails to work) then gem install rails 
+gem install rails 
 ```
-
 ### Setup
 
 Clone this repository to your desired folder:
 
+```sh
+  git clone https://github.com/Moathal/blog .
+```
 
 ```sh
-  - cd <folderName>
-  - git clone https://github.com/Moathal/blog .
+  cd <folderName>
 ```
 
 
@@ -106,7 +108,9 @@ Install this project with:
 
 ```sh
   cd <folderName>
-  - gem bundle install
+```
+```sh
+  gem bundle install
 ```
 
 ### Run tests
@@ -127,8 +131,8 @@ To run tests, run the following command:
 
 👤 **Moathal Kachi**
 
-- GitHub: [@github](https://github.com/Moathal)
-- Twitter: [@LinkedIn](https://www.linkedin.com/in/moathalkachi)
+- [@github](https://github.com/Moathal)
+- [@LinkedIn](https://www.linkedin.com/in/moathalkachi)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
