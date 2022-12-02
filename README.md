@@ -66,7 +66,7 @@
 
 > Add a link to your deployed project.
 
-- [Live Demo Link]()
+- [Live Demo Link] (Not available)
 
 ## Presentation
 [N/A]()
