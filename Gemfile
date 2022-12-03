@@ -60,7 +60,7 @@ group :development,
   gem 'debug',
       platforms: %i[mri
                     mingw x64_mingw]
- gem 'rspec-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
