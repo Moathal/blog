@@ -1,1 +1,20 @@
-<h1>posts</h1>
+<div class="mt-8">
+<div>
+<img src='<%=@user.photo%>'>
+<h2><%=@user.name%></h2>
+<p><%=@user.bio%></p>
+<p>Number of posts<span><%=@user.post_counter%></span></p>
+</div>
+<div class="mt-8">
+    <p>
+      <% if @posts.empty? %>
+        <p>There are no posts :(</p>
+      <% end %>
+    </p>
+</div>
+    <ul>
+      <% @posts.each do |post|%>
+        <%= render partial: "posts/post", locals: { post: post } %>
+      <% end %>
+    </ul>
+</div>

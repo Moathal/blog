@@ -1,0 +1,17 @@
+<li class="flex m-8">
+  <div class="h-28 w-28 flex-shrink-0 overflow-hidden border-black border-4">
+    <img src="<%= user.photo %>" alt="profile picture" class="">
+  </div>
+
+  <div class="flex flex-col p-4">
+      <div class="flex justify-between text-base font-medium">
+        <h2 class="text">
+          <a href="/users/<%= user.id %>"><%= user.name%></a>
+        </h2>
+      </div>
+    <div>
+      <p class="ml-4">Number of Posts </p>
+      <button type="button" class="text"> <%= user.post_counter %></button>
+    </div>
+  </div>
+</li>

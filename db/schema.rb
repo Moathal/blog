@@ -39,8 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_085149) do
     t.string "title"
     t.string "text"
     t.string "timestamps"
-    t.integer "comments_counter"
-    t.integer "likes_counter"
+    t.integer "comments_counter", default: 0
+    t.integer "likes_counter", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_085149) do
     t.string "timestamps"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "post_counter"
+    t.integer "post_counter", default: 0
   end
 
   add_foreign_key "comments", "posts"

@@ -1,1 +1,15 @@
-<h1>users</h1>
+<div class="mt-8">
+    <ul>
+      <% @users.each do |user|%>
+        <%= render partial: "users/user", locals: { user: user } %>
+      <% end %>
+    </ul>
+</div>
+
+<div class="mt-8">
+    <p>
+      <% if @users.empty? %>
+        <p>There are no users :(</p>
+      <% end %>
+    </p>
+</div>

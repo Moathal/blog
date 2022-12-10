@@ -1,1 +1,17 @@
-<h1>post</h1>
+<div class="m-4">
+<h3><%=@post.title%> by <%=@user.name%><h3>
+    <div class="m-4">
+      <p class="ml-4">Number of Comments </p>
+      <button type="button" class="text"><%= @post.comments_counter %></button>
+    </div>
+        <div class="m-4">
+      <p class="ml-4">Number of Likes </p>
+      <button type="button" class="text"><%= @post.likes_counter %></button>
+    <p><%=@post.text%><p>
+    </div>
+    <div class="m-4">
+    <h2>COMMENTS</h2>
+    <%@comments.each do |comment|%>
+        <p class="card-text"><%= comment.author.name %>: <%= comment.text %></p>
+        <%end%>
+    </div>
