@@ -1,0 +1,13 @@
+<li class="flex m-8">
+<a href="posts/<%=post.id%>"><h3><%=post.title%></h3></a>
+   <p><%=post.text%></p>
+    <div class="m-4">
+      <p class="ml-4">Number of Comments </p>
+      <button type="button" class="text"><%= post.comments_counter %></button>
+    </div>
+        <div class="m-4">
+      <p class="m-4">Number of Likes </p>
+      <button type="button" class="text"><%= post.likes_counter %></button>
+    </div>
+  </div>
+</li>
