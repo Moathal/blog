@@ -17,4 +17,5 @@
         <%= render partial: "posts/post", locals: { post: post } %>
       <% end %>
     </ul>
+    <%= link_to "Add New Post", new_user_post_path(user_id: @user.id) %>
 </div>
