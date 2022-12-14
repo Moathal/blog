@@ -1,17 +1,13 @@
 <li class="flex m-8">
-<a id="post<%=post.id%>" href=<%= user_post_path(@user.id, post.id) %>><h3><%=post.title%></h3></a>
+<a href="posts/<%=post.id%>"><h3><%=post.title%></h3></a>
    <p><%=post.text%></p>
     <div class="m-4">
-      <p class="ml-4">Number of Comments: <span class="text"><%= post.comments_counter %></span></p>
+      <p class="ml-4">Number of Comments </p>
+      <button type="button" class="text"><%= post.comments_counter %></button>
     </div>
         <div class="m-4">
-      <p class="m-4">Number of Likes: <span class="text"><%= post.likes_counter %></span></p>
+      <p class="m-4">Number of Likes </p>
+      <button type="button" class="text"><%= post.likes_counter %></button>
     </div>
-  </div>
-  <div class="m-4">
-    <%post.recent_five_comments.includes(:author).each do |comment|%>
-    <p class="card-text"><%= comment.author.name %>: <%= comment.text %></p>
-    <%end%>
-  </div>
   </div>
 </li>

@@ -6,11 +6,12 @@
   <div class="flex flex-col p-4">
       <div class="flex justify-between text-base font-medium">
         <h2 class="text">
-          <a id="user<%=user.id%>" href="/users/<%= user.id %>"><%= user.name%></a>
+          <a href="/users/<%= user.id %>"><%= user.name%></a>
         </h2>
       </div>
     <div>
-      <p class="ml-4">Number of Posts: <span class="text"> <%= user.post_counter %></span></p>
+      <p class="ml-4">Number of Posts </p>
+      <button type="button" class="text"> <%= user.post_counter %></button>
     </div>
   </div>
 </li>
