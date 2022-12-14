@@ -61,7 +61,7 @@ RSpec.configure do |config|
   #   # Limits the available syntax to the non-monkey patched syntax that is
   #   # recommended. For more details, see:
   #   # https://relishapp.com/rspec/rspec-core/docs/configuration/zero-monkey-patching-mode
-     config.disable_monkey_patching! # this was commented
+  config.disable_monkey_patching! # this was commented
   #
   #   # Many RSpec users commonly either run the entire suite or an individual
   #   # file, and it's useful to allow more verbose output when running an
@@ -82,11 +82,11 @@ RSpec.configure do |config|
   #   # order dependency and want to debug it, you can fix the order by providing
   #   # the seed, which is printed after each run.
   #   #     --seed 1234
-     config.order = :random # This was commented
+  config.order = :random # This was commented
   #
   #   # Seed global randomization in this process using the `--seed` CLI option.
   #   # Setting this allows you to use `--seed` to deterministically reproduce
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
-     Kernel.srand config.seed # This was commented
+  Kernel.srand config.seed # This was commented
 end
