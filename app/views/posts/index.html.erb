@@ -8,7 +8,7 @@
 <div class="mt-8">
     <p>
       <% if @posts.empty? %>
-        <p>There are no posts :(</p>
+        <p>There are no posts!!</p>
       <% end %>
     </p>
 </div>
@@ -17,5 +17,5 @@
         <%= render partial: "posts/post", locals: { post: post } %>
       <% end %>
     </ul>
-    <%= link_to "Add New Post", new_user_post_path(user_id: @user.id) %>
+    <%= link_to "Add New Post", new_user_post_path(user_id: @user.id), class: "m-4" %>
 </div>
