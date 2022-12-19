@@ -1,6 +1,12 @@
 class LikesController < ApplicationController
+
   def new
-    @like = Like.new
+    if user_signed_in?
+      @like = Like.new
+    else
+      redirect_to "/users/sign_in"
+      @new
+    end
   end
 
   def create

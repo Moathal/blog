@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
   def new
-    @comments = Comment.new
+    if user_signed_in?
+      @comment = @comments = Comment.new
+    else
+      redirect_to "/users/sign_in"
+      @new
+    end
   end
 
   def create
