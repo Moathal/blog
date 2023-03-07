@@ -1,6 +1,4 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!
-
   def new
     if user_signed_in?
       @like = Like.new
@@ -10,6 +8,7 @@ class LikesController < ApplicationController
   end
 
   def create
+    if user_signed_in?
       @post = Post.find(params[:post_id])
       @like = @post.likes.new
       @like.author_id = current_user.id
@@ -19,5 +18,8 @@ class LikesController < ApplicationController
       else
         render :new
       end
+    else
+      redirect_to '/users/sign_in'
+    end
   end
 end
