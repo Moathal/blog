@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = @post.comments
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.author_id = current_user.id
@@ -23,12 +23,12 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text)
   end
-  
+
   def new
     if user_signed_in?
       @post = Post.new
     else
-      redirect_to "/users/sign_in"
+      redirect_to '/users/sign_in'
       @new
     end
   end
