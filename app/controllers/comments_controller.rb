@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   def new
     if user_signed_in?
       @comment = @comments = Comment.new
