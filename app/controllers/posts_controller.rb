@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, :except =>[:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
