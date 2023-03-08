@@ -1,11 +1,11 @@
 class LikesController < ApplicationController
-  def new
-    if user_signed_in?
-      @like = Like.new
-    else
-      redirect_to '/users/sign_in'
-    end
-  end
+  # def new
+  #   if user_signed_in?
+  #     @like = Like.new
+  #   else
+  #     redirect_to '/users/sign_in'
+  #   end
+  # end
 
   def create
     if user_signed_in?
@@ -21,8 +21,8 @@ class LikesController < ApplicationController
           render :new
         end
       else
-        destroy_like(@like.id)
-        Like.update_likes_num
+        destroy_like(@like, @post)
+        redirect_to user_post_path(current_user, @post)
       end
     else
       redirect_to '/users/sign_in'
@@ -34,7 +34,10 @@ class LikesController < ApplicationController
     params[:post_id])
   end
 
-  def destroy_like(like_id)
-    Like.find(like_id).destroy
+  def destroy_like(like, post)
+    like.destroy
+    like.save
+    post.update(likes_counter: post.likes.count)
+    post.save
   end
 end
