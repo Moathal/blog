@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -20,13 +21,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def new
-    @post = Post.new
-  end
-
-  private
-
   def post_params
     params.require(:post).permit(:title, :text)
+  end
+
+  def new
+    if user_signed_in?
+      @post = Post.new
+    else
+      redirect_to '/users/sign_in'
+      @new
+    end
   end
 end

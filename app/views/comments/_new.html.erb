@@ -1,0 +1,8 @@
+<div class='d-flex align-items-center flex-column'>
+  <%= form_with(model: @comment, url: user_post_comments_path(@user, @post), local: true)  do |f| %>
+    <div class='mb-3'>
+      <%= f.text_area :text, size:"50x3",placeholder: 'Add Comment', name: "comment[text]", class:'form-control'%>
+    </div>
+    <%= f.submit "Comment",name: 'comment_submit', class:'btn btn-primary' %>
+  <% end %> 
+</div>

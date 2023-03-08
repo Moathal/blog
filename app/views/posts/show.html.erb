@@ -9,15 +9,15 @@
       <button type="button" class="text"><%= @post.likes_counter %></button>
     <p><%=@post.text%><p>
     </div>
-    <div class="m-4">
+    <div class="card m-4">
+    <%= render 'likes/add_like'%>
     <h2>COMMENTS</h2>
-    <%@comments.each do |comment|%>
-        <p class="card-text"><%= comment.author.name %>: <%= comment.text %></p>
-        <%end%>
-        <%= link_to "Add New Comment", new_user_post_comment_path(user_id: @user.id, post_id: @post.id), class:"btn btn-primary" %>
-    </div>
-    <div class="m-4">
-      <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |f| %>
-        <%= f.submit "Like", class:"btn btn-outline-primary" %>
+      <% @post.comments.each do |comment| %>
+      <div class="card p-2">
+     <h4 class="fw-bold"><%= comment.author.name %></h4>
+      <p><%= comment.text %></p>
+      </div>
       <% end %>
+    <div class="m-4">
     </div>
+    <%= render 'comments/new' %>
