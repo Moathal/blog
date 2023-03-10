@@ -1,13 +1,26 @@
-<li class="flex m-8">
-<a href="posts/<%=post.id%>"><h3><%=post.title%></h3></a>
+<div class="card-body">
+<h2 class="card-title"><%=post.title%></h2>
    <p><%=post.text%></p>
-    <div class="m-4">
-      <p class="ml-4">Number of Comments </p>
-      <button type="button" class="text"><%= post.comments_counter %></button>
-    </div>
-        <div class="m-4">
-      <p class="m-4">Number of Likes </p>
+    <div>
+      <p>Number of Likes </p>
       <button type="button" class="text"><%= post.likes_counter %></button>
     </div>
+    <div>
+      <p>Number of Comments </p>
+      <button type="button" class="text"><%= post.comments_counter %></button>
+      <% post.recent_five_comments.includes([:author]).each do |comment| %>
+        <div class="card d-flex flex-row g-0">
+          <img style="width: 8vw; height: 8%" class="card-img-top img-thumbnail rounded-circle" src='<%= comment.author.photo %>' alt="Title">
+          <div class="card-body">
+            <div class="card-title d-flex flex-row justify-content-between">
+              <h4><%= comment.author.name %></h4>
+
+              <small><%= comment.created_at %></small>
+            </div>
+              <p class="card-text"><%= comment.text %></p>
+          </div>
+        </div>
+        <% end %>
+    </div>
   </div>
-</li>
+</div>

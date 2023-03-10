@@ -1,10 +1,4 @@
 <div class="mt-8">
-<div>
-<img src='<%=@user.photo%>'>
-<h2><%=@user.name%></h2>
-<p><%=@user.bio%></p>
-<p>Number of posts<span><%=@user.post_counter%></span></p>
-</div>
 <div class="mt-8">
     <p>
       <% if @posts.empty? %>
@@ -12,10 +6,15 @@
       <% end %>
     </p>
 </div>
-    <ul>
-      <% @posts.each do |post|%>
-        <%= render partial: "posts/post", locals: { post: post } %>
+    <div class="container-fluid">
+      <% @posts.each do |post|  %>
+      <%= link_to posts_path(post.id), style: "white-space: break-spaces; height: min-content; display: flex;", class: "navbar-brand p-0 m-2" do%>
+          <div class="card"><%= render partial: "posts/post", locals: { post: post } %></div>
+        <% end %>
       <% end %>
-    </ul>
-    <%= link_to "Add New Post", new_user_post_path(user_id: @user.id) %>
+    </div>
+    
+    <% if current_user %>
+      <%= link_to "Add New Post", new_user_post_path(user_id: current_user.id) %>
+    <% end %>
 </div>

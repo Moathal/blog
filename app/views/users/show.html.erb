@@ -1,6 +1,6 @@
 <div class="m-4">
 <img src='<%=@user.photo%>'>
-<h2><b>name: </b?\><%=@user.name%></h2>
+<h2><b>name: </b><%=@user.name%></h2>
 <p><b>bio: </b><%=@user.bio%></p>
 <p>Number of posts<span><%=@user.post_counter%></span></p>
 </div>
@@ -9,5 +9,5 @@
 <a href="<%=@user.id%>/posts/<%=post.id%>"><h3><%= post.title%></h3></a>
 <p><%=post.text%></p>
 <%end%>
-<a href="<%=@user.id%>/posts">Show all posts</a>
+<a href="<%=@user.id%>/posts">See all posts</a>
 </div>

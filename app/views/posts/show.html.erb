@@ -12,7 +12,7 @@
     <div class="card m-4">
     <%= render 'likes/add_like'%>
     <h2>COMMENTS</h2>
-      <% @post.comments.each do |comment| %>
+      <% @post.comments.includes([:author]).each do |comment| %>
       <div class="card p-2">
      <h4 class="fw-bold"><%= comment.author.name %></h4>
       <p><%= comment.text %></p>
