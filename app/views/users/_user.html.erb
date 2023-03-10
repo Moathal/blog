@@ -1,17 +1,14 @@
-<li class="flex m-8">
-  <div class="h-28 w-28 flex-shrink-0 overflow-hidden border-black border-4">
-    <img src="<%= user.photo %>" alt="profile picture" class="">
-  </div>
 
-  <div class="flex flex-col p-4">
-      <div class="flex justify-between text-base font-medium">
-        <h2 class="text">
-          <a href="/users/<%= user.id %>"><%= user.name%></a>
-        </h2>
-      </div>
-    <div>
-      <p class="ml-4">Number of Posts </p>
-      <button type="button" class="text"> <%= user.post_counter %></button>
+
+  <div class=" card flex-row justify-center">  
+    <img style="width: 20%" src="<%= user.photo %>" alt="profile picture" class="img-thumbnail">
+    <div class="d-flex flex-column justify-content-around card-body text-base font-medium" style="width: 70%">
+          <h2 class="card-title w-bolder">
+            <%= user.name%>
+          </h2>
+      <p class="card-text">
+        <%= user.bio%>
+      </p>
+      <span class="text mt-auto mb-0"> <small><%= user.post_counter %></small> <small class="ml-1">Posts</small></span>
     </div>
-  </div>
-</li>
+  </div>  

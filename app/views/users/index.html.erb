@@ -1,9 +1,11 @@
 <div class="mt-8">
-    <ul>
+    <div class="container-fluid">
       <% @users.each do |user|%>
-        <%= render partial: "users/user", locals: { user: user } %>
+        <%= link_to user_path(user.id), style: "white-space: break-spaces; height: min-content; display: flex;", class: "navbar-brand p-0 m-2" do%>
+          <%= render partial: "users/user", locals: { user: user } %>
+        <% end %>
       <% end %>
-    </ul>
+    </div>
 </div>
 
 <div class="mt-8">
