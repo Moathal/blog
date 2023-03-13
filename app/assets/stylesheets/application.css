@@ -17,3 +17,7 @@
 .users {
   padding: 2% 5%;
 }
+
+.badge:hover {
+  color: burlywood !important;
+}

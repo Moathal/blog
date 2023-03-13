@@ -1,26 +1,41 @@
-<div class="card-body">
+<div class="card-body d-flex flex-column">
 <h2 class="card-title"><%=post.title%></h2>
-   <p><%=post.text%></p>
-    <div>
-      <p>Number of Likes </p>
-      <button type="button" class="text"><%= post.likes_counter %></button>
+   <p class="card-text"><%=post.text%></p>
+   <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-secondary">
+    By <%= post.author.name %>
+  </a>
+    <div class="card-text d-flex flex-row gap-3">
+    <span class="text ml-1 mt-auto mb-0"> <small><%= post.likes_counter %></small>
+    <%= link_to user_post_path(post.author_id, post.id), class: "text-decoration-none text-reset" do %>
+      <small class="ml-1">
+        Likes
+      </small>
+    <% end %>  
+    </span>
+    <span class="text mt-auto mb-0"> <small> <%= post.comments_counter %></small>
+        <%= link_to user_post_path(post.author_id, post.id), class: "text-decoration-none text-reset" do %>
+          <small class="ml-1">
+            Comments
+          </small>
+        <% end %>
+    </span>
     </div>
-    <div>
-      <p>Number of Comments </p>
-      <button type="button" class="text"><%= post.comments_counter %></button>
       <% post.recent_five_comments.includes([:author]).each do |comment| %>
-        <div class="card d-flex flex-row g-0">
-          <img style="width: 8vw; height: 8%" class="card-img-top img-thumbnail rounded-circle" src='<%= comment.author.photo %>' alt="Title">
-          <div class="card-body">
-            <div class="card-title d-flex flex-row justify-content-between">
-              <h4><%= comment.author.name %></h4>
-
-              <small><%= comment.created_at %></small>
+        <%= link_to user_path(comment.author_id), class: "navbar-brand p-0 m-lg-2 m-sm-1" do %>
+        <div class=" card d-flex flex-lg-row flex-sm-column g-0">
+          <div class="card-body p-1">
+            <div class="card-title d-flex flex-column flex-lg-row">
+          <img style="width: 10vw; scale: 1/1" class="card-img-top img-thumbnail rounded-circle col-sm-1 col-lg-1 p-1" src='<%= comment.author.photo %>' alt="Title">
+              <div>
+              <h5 style="white-space: normal" class="fs-sm-4 mt-3"><%= comment.author.name %></h5>
+              <p style="white-space: normal" class="card-text fs-sm-6 flex-shrink-1"><%= comment.text %></p>
+              </div>
             </div>
-              <p class="card-text"><%= comment.text %></p>
+            <div>
+              <small class="text-secondary"><%= time_ago_in_words(comment.created_at) %> ago</small>
+            </div>
           </div>
         </div>
+          <% end %>
         <% end %>
     </div>
-  </div>
-</div>

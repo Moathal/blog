@@ -2,19 +2,15 @@
 <div class="mt-8">
     <p>
       <% if @posts.empty? %>
-        <p>There are no posts :(</p>
+        <h1 class="title fw-bold fs-1 text-center">There are no posts :(</h1>
       <% end %>
     </p>
 </div>
     <div class="container-fluid">
-      <% @posts.each do |post|  %>
-      <%= link_to posts_path(post.id), style: "white-space: break-spaces; height: min-content; display: flex;", class: "navbar-brand p-0 m-2" do%>
-          <div class="card"><%= render partial: "posts/post", locals: { post: post } %></div>
+      <% @posts.includes([:author]).each do |post|  %>
+      <%= link_to user_post_path(post.author_id, post.id), style: "white-space: break-spaces; height: min-content;", class: "navbar-brand p-0 m-0" do%>
+          <div class="card d-flex flex-column"><%= render partial: "posts/post", locals: { post: post } %></div>
         <% end %>
       <% end %>
     </div>
-    
-    <% if current_user %>
-      <%= link_to "Add New Post", new_user_post_path(user_id: current_user.id) %>
-    <% end %>
 </div>

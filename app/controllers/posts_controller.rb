@@ -1,17 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   def index
-    recent = params[:recent];
-    if params[:post_index]
-      post_index = params[:post_index];
-    else
-      post_index = true
-    end
-    if post_index
+    if params[:post_index].present?
       @posts = Post.all
     else
-      @user = User.find(params[:user_id])
-      @posts = @user.posts
+      @id = User.find(params[:user_id])
+      @posts = Post.where(author_id: @id)
     end
   end
 

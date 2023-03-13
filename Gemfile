@@ -88,3 +88,5 @@ gem 'devise'
 gem 'letter_opener', group: :development
 
 gem 'ruby-lsp', '~> 0.3.6', group: :development
+
+gem 'bootstrap', '~> 5.2.3-alpha1'
