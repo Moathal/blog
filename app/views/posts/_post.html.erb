@@ -4,7 +4,7 @@
    <% if user_signed_in? && post.author_id == current_user.id %>
       <%= link_to "Delete", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , style: "max-width: 46vw; margin-left: auto; margin-right: 1vw",class:"btn btn-outline-danger" %>
     <% else %>
-       <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-secondary">
+       <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-success">
         By <%= post.author.name %>
       </a>
    <% end %>
@@ -36,8 +36,11 @@
                 <p style="white-space: normal" class="card-text fs-sm-6 flex-shrink-1"><%= comment.text %></p>
                 </div>
               </div>
-              <div>
+              <div class="d-flex flex-row justify-content-between">
                 <small class="text-secondary"><%= time_ago_in_words(comment.created_at) %> ago</small>
+                <% if user_signed_in? && comment.author_id == current_user.id %>
+                  <%= link_to "Delete", user_post_comment_path(id: comment.id, post_id: post.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , style: "max-width: 46vw; margin-left: auto; margin-right: 1vw",class:"text-danger" %>
+                <% end %>
               </div>
             </div>
           </div>
