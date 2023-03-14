@@ -1,9 +1,13 @@
 <div class="card-body d-flex flex-column">
 <h2 class="card-title"><%=post.title%></h2>
    <p class="card-text"><%=post.text%></p>
-   <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-secondary">
-    By <%= post.author.name %>
-  </a>
+   <% if user_signed_in? && post.author_id == current_user.id %>
+      <%= link_to "Delete", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , style: "max-width: 46vw; margin-left: auto; margin-right: 1vw",class:"btn btn-outline-danger" %>
+    <% else %>
+       <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-secondary">
+        By <%= post.author.name %>
+      </a>
+   <% end %>
     <div class="card-text d-flex flex-row gap-3">
     <span class="text ml-1 mt-auto mb-0"> <small><%= post.likes_counter %></small>
     <%= link_to user_post_path(post.author_id, post.id), class: "text-decoration-none text-reset" do %>

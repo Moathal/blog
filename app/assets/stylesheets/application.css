@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ * {
+  color: #1a3529;
+ }
+
 .users {
   padding: 2% 5%;
 }

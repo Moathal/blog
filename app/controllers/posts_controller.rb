@@ -10,6 +10,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    like = Like.find_by(author_id: current_user.id)
+    @liked = like.nil?
     @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
@@ -36,5 +38,11 @@ class PostsController < ApplicationController
       redirect_to '/users/sign_in'
       @new
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to "/user/#{current_user.id}/posts"
   end
 end
