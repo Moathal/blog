@@ -24,6 +24,26 @@
         <% end %>
     </span>
     </div>
+    <% if current_page?("/users/#{post.author_id}/posts/#{post.id}") %>
+        <% post.comments.includes([:author]).each do |comment| %>
+          <%= link_to user_path(comment.author_id), class: "navbar-brand p-0 m-lg-2 m-sm-1" do %>
+          <div class=" card d-flex flex-lg-row flex-sm-column g-0">
+            <div class="card-body p-1">
+              <div class="card-title d-flex flex-column flex-lg-row">
+            <img style="width: 10vw; scale: 1/1" class="card-img-top img-thumbnail rounded-circle col-sm-1 col-lg-1 p-1" src='<%= comment.author.photo %>' alt="Title">
+                <div>
+                <h5 style="white-space: normal" class="fs-sm-4 mt-3"><%= comment.author.name %></h5>
+                <p style="white-space: normal" class="card-text fs-sm-6 flex-shrink-1"><%= comment.text %></p>
+                </div>
+              </div>
+              <div>
+                <small class="text-secondary"><%= time_ago_in_words(comment.created_at) %> ago</small>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      <% else %>
       <% post.recent_five_comments.includes([:author]).each do |comment| %>
         <%= link_to user_path(comment.author_id), class: "navbar-brand p-0 m-lg-2 m-sm-1" do %>
         <div class=" card d-flex flex-lg-row flex-sm-column g-0">
@@ -42,4 +62,5 @@
         </div>
           <% end %>
         <% end %>
+      <% end %>
     </div>

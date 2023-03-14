@@ -1,23 +1,5 @@
-<div class="m-4">
-<h3><%=@post.title%> by <%=@user.name%><h3>
-    <div class="m-4">
-      <p class="ml-4">Number of Comments </p>
-      <button type="button" class="text"><%= @post.comments_counter %></button>
-    </div>
-        <div class="m-4">
-      <p class="ml-4">Number of Likes </p>
-      <button type="button" class="text"><%= @post.likes_counter %></button>
-    <p><%=@post.text%><p>
-    </div>
-    <div class="card m-4">
+  <div class="card d-flex flex-column">
+    <%= render partial: "posts/post", locals: { post: @post } %>
     <%= render 'likes/add_like'%>
-    <h2>COMMENTS</h2>
-      <% @post.comments.includes([:author]).each do |comment| %>
-      <div class="card p-2">
-     <h4 class="fw-bold"><%= comment.author.name %></h4>
-      <p><%= comment.text %></p>
-      </div>
-      <% end %>
-    <div class="m-4">
-    </div>
     <%= render 'comments/new' %>
+  </div>
