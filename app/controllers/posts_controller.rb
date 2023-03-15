@@ -10,10 +10,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    like = Like.find_by(author_id: current_user.id)
-    @liked = like.nil?
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    like = Like.find_by(author_id: @user.id)
+    @liked = like.nil?
     @comments = @post.comments
   end
 

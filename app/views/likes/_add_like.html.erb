@@ -1,9 +1,11 @@
-      <% if @post.likes.find_by(author_id: current_user.id).nil? %>
-        <%= form_with model: @like, class: 'd-flex flex-row justify-content-end', url: user_post_likes_path(post_id: @post.id, user_id: @user.id, create: true) do |f| %>
-          <%= f.submit "Like",  style: "margin: auto 1% 1% 1%; width: min-content", class:"btn btn-outline-success" %>
-        <% end %>
-        <% else %>
-          <%= form_with model: @like, class: 'd-flex flex-row justify-content-end', url: user_post_likes_path(post_id: @post.id, user_id: @user.id) do |f| %>
-            <%= f.submit "Remove like", style: "margin: auto 1% 1% 1%;", class:"btn btn-outline-danger" %>
-          <% end %>
+<% if user_signed_in?%>
+  <% if @post.likes.find_by(author_id: current_user.id).nil? %>
+    <%= form_with model: @like, class: 'd-flex flex-row justify-content-end', url: user_post_likes_path(post_id: @post.id, user_id: @user.id, create: true) do |f| %>
+      <%= f.submit "Like",  style: "margin: auto 1% 1% 1%; width: min-content", class:"btn btn-outline-success" %>
+    <% end %>
+    <% else %>
+      <%= form_with model: @like, class: 'd-flex flex-row justify-content-end', url: user_post_likes_path(post_id: @post.id, user_id: @user.id) do |f| %>
+        <%= f.submit "Remove like", style: "margin: auto 1% 1% 1%;", class:"btn btn-outline-danger" %>
       <% end %>
+  <% end %>
+<% end %>

@@ -7,16 +7,16 @@
     </p>
 </div>
     <div class="container-fluid">
-    <% if current_page?("/users/#{current_user.id}/posts") %>
+    <% if user_signed_in? && current_page?("/users/#{current_user.id}/posts") %>
         <% @posts.each do |post|  %>
           <%= link_to user_post_path(post.author_id, post.id), style: "white-space: break-spaces; height: min-content;", class: "navbar-brand p-0 m-0" do%>
-            <div class="card d-flex flex-column"><%= render partial: "posts/post", locals: { post: post } %></div>
+            <div class="card d-flex flex-column m-1"><%= render partial: "posts/post", locals: { post: post } %></div>
           <% end %>
         <% end %>
       <% else %>
         <% @posts.includes([:author]).each do |post|  %>
         <%= link_to user_post_path(post.author_id, post.id), style: "white-space: break-spaces; height: min-content;", class: "navbar-brand p-0 m-0" do%>
-            <div class="card d-flex flex-column"><%= render partial: "posts/post", locals: { post: post } %></div>
+            <div class="card d-flex flex-column m-1"><%= render partial: "posts/post", locals: { post: post } %></div>
           <% end %>
         <% end %>
       <% end %>
