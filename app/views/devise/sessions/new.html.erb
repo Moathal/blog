@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="card d-flex flex-column justify-content-center align-items-strech">
+<h2 class="card-title m-2">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "card-body d-flex flex-column justify-content-center form") do |f| %>
+<%= f.email_field :email, autofocus: true, autocomplete: " input email", placeholder: "Email", class: "input card-text m-2" %>
+<%= f.password_field :password, autocomplete: "current-password",  placeholder: "Password", class:"input m-2 card-text"%>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field m-1">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+    <%= f.submit "Log in", class: "btn btn-success m-2" %>
+<% end %>
+
+<div class="m-2"><%= render "devise/shared/links" %></div>
+
+</div>
+</div>
