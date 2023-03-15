@@ -1,6 +1,19 @@
 
 
-  <div style="width: 96vw" class="card flex-lg-row justify-content-center"> 
+  <div style="width: 96vw" class="card flex-lg-row justify-content-center">
+    
+    <% if current_page?("/users/#{user.id}") %>
+      <img style="height: auto; scale: 2/3" src="<%= user.photo %>" alt="profile picture" class="img-thumbnail m-auto">
+    <div class="d-flex flex-column justify-content-between card-body text-base font-medium">
+      <h2 class="card-title fs-2 fw-bold text-sm-center text-lg-start">
+        <%= user.name%>
+      </h2>
+      <p style="justify-self: center;" class="card-text text-sm-center mt-auto ml-auto w-sm-11">
+        <%= user.bio%>
+      </p>
+      <span class="text mt-auto mb-0"> <small><%= user.post_counter %></small> <small class="ml-1">Posts</small></span>
+    </div>
+      <% else %>
       <img style="min-width: 16vw; max-width: 45vw; height: auto; scale: 2/3" src="<%= user.photo %>" alt="profile picture" class="img-thumbnail col-sm-2 m-auto">
     <div class="d-flex flex-column justify-content-around card-body text-base font-medium">
       <h2 class="card-title fs-2 fw-bold text-sm-center text-lg-start">
@@ -11,4 +24,5 @@
       </p>
       <span class="text mt-auto mb-0"> <small><%= user.post_counter %></small> <small class="ml-1">Posts</small></span>
     </div>
+    <% end %>
   </div>  

@@ -1,13 +1,9 @@
-<div class="m-4">
-<img src='<%=@user.photo%>'>
-<h2><b>name: </b><%=@user.name%></h2>
-<p><b>bio: </b><%=@user.bio%></p>
-<p>Number of posts<span><%=@user.post_counter%></span></p>
-</div>
-<div class="m-4">
+<div class="container-fluid d-flex flex-column align-center">
+  <%= render partial: "users/user", locals: { user: @user } %>
 <%@user.recent_three_posts.each do |post|%>
-<a href="<%=@user.id%>/posts/<%=post.id%>"><h3><%= post.title%></h3></a>
-<p><%=post.text%></p>
+<%= link_to user_post_path(post.author_id, post.id), style: "white-space: break-spaces; height: min-content;", class: "navbar-brand p-0 m-0" do%>
+  <div class="card d-flex flex-column"><%= render partial: "posts/post", locals: { post: post } %></div>
+<% end %>
 <%end%>
-<a href="<%=@user.id%>/posts">See all posts</a>
+<%= link_to "See all posts",user_posts_path(user_id: @user.id), style: "margin-top: 2vw; margin-bottom: 2vw;" , class: "btn btn-outline-success" %>
 </div>

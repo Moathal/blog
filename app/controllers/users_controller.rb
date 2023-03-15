@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.order(post_counter: :desc)
   end
 
   def show

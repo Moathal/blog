@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   def index
     if params[:post_index].present?
-      @posts = Post.all
+      @posts = Post.all.order(likes_counter: :desc)
     else
       @id = User.find(params[:user_id])
       @posts = Post.where(author_id: @id)

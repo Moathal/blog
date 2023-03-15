@@ -4,7 +4,7 @@
    <% if user_signed_in? && post.author_id == current_user.id %>
       <%= link_to "Delete", post, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } , style: "max-width: 46vw; margin-left: auto; margin-right: 1vw",class:"btn btn-outline-danger" %>
     <% else %>
-       <a href='users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-success">
+       <a href='/users/<%= post.author_id %>' style="max-width: 46vw; margin-left: auto; margin-right: 1vw" class="badge text-decoration-none mb-1 bg-success">
         By <%= post.author.name %>
       </a>
    <% end %>
@@ -14,7 +14,7 @@
       <small class="ml-1">
         Likes
       </small>
-    <% end %>  
+    <% end %>
     </span>
     <span class="text mt-auto mb-0"> <small> <%= post.comments_counter %></small>
         <%= link_to user_post_path(post.author_id, post.id), class: "text-decoration-none text-reset" do %>
@@ -30,7 +30,7 @@
           <div class=" card d-flex flex-lg-row flex-sm-column g-0">
             <div class="card-body p-1">
               <div class="card-title d-flex flex-column flex-lg-row">
-            <img style="width: 10vw; scale: 1/1" class="card-img-top img-thumbnail rounded-circle col-sm-1 col-lg-1 p-1" src='<%= comment.author.photo %>' alt="Title">
+              <img style="width: 10vw; scale: 1/1" class="card-img-top img-thumbnail rounded-circle col-sm-1 col-lg-1 p-1" src='<%= comment.author.photo %>' alt="Title">       
                 <div>
                 <h5 style="white-space: normal" class="fs-sm-4 mt-3"><%= comment.author.name %></h5>
                 <p style="white-space: normal" class="card-text fs-sm-6 flex-shrink-1"><%= comment.text %></p>

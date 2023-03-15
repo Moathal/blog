@@ -1,39 +1,31 @@
-<h2>Sign up</h2>
+<div class="container-fluid">
+  <div class="card d-flex flex-column justify-content-center align-items-strech">
+  
+<h2 class="card-title m-2">Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "card-body d-flex flex-column justify-content-center form") do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: " input card-text m-2" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: " input email", placeholder: "Email", class: "input card-text m-2" %>
+    <h3 class="title fs-4 m-2">About</h3>
+    <%= f.text_area :bio, autofocus: true, placeholder: "Bio", class: "input card-text m-2", style: "width: 90%" %>
+  
+  <h3 class="title fs-4 m-2">Password</h3>
+  <div class="row">
+  <div class="d-flex flex-xl-row flex-column justify-content-start">
+      <%= f.password_field :password, autocomplete: "new-password",  placeholder: "Password (#{@minimum_password_length } characters minimum)", class:"input m-1 card-text col-sm-8 col-lg-4", style:"min-width: 40%" %>
+
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class:"input m-1 card-text col-lg-4 col-sm-8",  style:"min-width: 40%" %>
+  </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_field :bio, autofocus: true, autocomplete: "bio" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div style="min-width: 40%" class="actions input card-text mx-2 m">
+    <%= f.submit "Sign up", class: "btn btn-success" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+  </div>
+</div>
