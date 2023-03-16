@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Blogger < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,0 +1,17 @@
+<div class="mt-8">
+    <div class="container-fluid">
+      <% @bloggers.each do |blogger|%>
+        <%= link_to blogger_path(blogger.id), style: "white-space: break-spaces; height: min-content; display: flex;", class: "navbar-brand p-0 m-2" do%>
+          <%= render partial: "bloggers/blogger", locals: { blogger: blogger } %>
+        <% end %>
+      <% end %>
+    </div>
+</div>
+
+<div class="mt-8">
+    <p>
+      <% if @bloggers.empty? %>
+        <p>There are no bloggers :(</p>
+      <% end %>
+    </p>
+</div>

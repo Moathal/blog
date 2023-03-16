@@ -22,17 +22,17 @@
              </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mb-2 mb-lg-0 m-auto">
-          <% if user_signed_in? %>
+          <% if blogger_signed_in? %>
             <li class="nav-item"><a href='/'  class="nav-link">Home</a></li>
-            <li class="nav-item"><%= link_to "My posts", user_posts_path(user_id: current_user.id), class: "nav-link" %></li>
-            <li class="nav-item"><%= link_to "Add New Post", new_user_post_path(user_id: current_user.id), class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "My posts", blogger_posts_path(blogger_id: current_blogger.id), class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to "Add New Post", new_blogger_post_path(blogger_id: current_blogger.id), class: "nav-link" %></li>
            <li class="nav-item"><%= link_to 'posts', posts_path(post_index: true), class: "nav-link" %></li>
-          <li class="list-style-none"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-danger m-auto", role: "button" %></li>
+          <li class="list-style-none"><%= link_to "Sign out", destroy_blogger_session_path, method: :delete, class: "btn btn-danger m-auto", role: "button" %></li>
           <% else %>
-            <li class="nav-item"><a href='/users' class="nav-link">Authors</a></li>
+            <li class="nav-item"><a href='/bloggers' class="nav-link">Authors</a></li>
            <li class="nav-item"><%= link_to 'posts', posts_path(post_index: true), class: "nav-link" %></li>
-            <li class="nav-item"><a href='/users/sign_in' class="btn btn-primary m-auto">Sign In</a></li>
-            <li class="nav-item"><a href='/users/sign_up' class="btn btn-warning m-auto ms-2">Register</a></li>
+            <li class="nav-item"><a href='/bloggers/sign_in' class="btn btn-primary m-auto">Sign In</a></li>
+            <li class="nav-item"><a href='/bloggers/sign_up' class="btn btn-warning m-auto ms-2">Register</a></li>
           <% end %>
           <ul>
           </div>

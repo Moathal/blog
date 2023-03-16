@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :bloggers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root 'users#index'
-  resources :users, only: [:index, :show] do
+  root 'bloggers#index'
+  resources :bloggers, only: [:index, :show] do
     resources :posts, only: [:create, :new, :index, :show] do
       resources :likes, only: [:create]
       resources :comments, only: [:create, :destroy]

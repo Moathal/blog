@@ -1,18 +1,18 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_blogger!
   def new
-    if user_signed_in?
+    if blogger_signed_in?
       @comment = Comment.new
     else
-      redirect_to '/users/sign_in'
+      redirect_to '/bloggers/sign_in'
     end
   end
 
   def create
-    @user = @user = User.find(params[:user_id])
+    @blogger = @blogger = Blogger.find(params[:blogger_id])
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
-    @comment.author_id = current_user.id
+    @comment.author_id = current_blogger.id
     if params[:comment_submit]
       if @comment.save
         flash[:notice] = 'Comment created successfully!'
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
         flash[:alert] = 'Error creating comment'
       end
     end
-    redirect_to user_post_path(@user, @post)
+    redirect_to blogger_post_path(@blogger, @post)
   end
 
   def destroy
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     @post.comments_counter -= 1
     @post.save
     @comment.destroy
-    redirect_to user_post_path(@post.author, @post)
+    redirect_to blogger_post_path(@post.author, @post)
   end
 
   private

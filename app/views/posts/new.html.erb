@@ -1,7 +1,7 @@
 <% @title="My Blog | Add Post" %>
 <div class='m-4 d-flex flex-column'>
   <h1>Create New Post</h1>
-  <%= form_with model: @post, url: user_posts_path do |f| %>
+  <%= form_with model: @post, url: blogger_posts_path do |f| %>
     <div class="m-4">
       <%= f.text_field :title, placeholder:"Enter Post Title", class:"form-control"%>
     </div>

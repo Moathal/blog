@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'Blogger'
   belongs_to :post, class_name: 'Post'
   after_save :update_comments_num
 

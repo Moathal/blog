@@ -1,27 +1,27 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_blogger!, except: %i[index show]
   def index
     if params[:post_index].present?
       @posts = Post.all.order(likes_counter: :desc)
     else
-      @id = User.find(params[:user_id])
+      @id = Blogger.find(params[:blogger_id])
       @posts = Post.where(author_id: @id)
     end
   end
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(params[:user_id])
-    like = Like.find_by(author_id: @user.id)
+    @blogger = Blogger.find(params[:blogger_id])
+    like = Like.find_by(author_id: @blogger.id)
     @liked = like.nil?
     @comments = @post.comments
   end
 
   def create
     @post = Post.new(post_params)
-    @post.author_id = current_user.id
+    @post.author_id = current_blogger.id
     if @post.save
-      redirect_to user_posts_path(current_user.id)
+      redirect_to blogger_posts_path(current_blogger.id)
     else
       render :new
     end
@@ -32,10 +32,10 @@ class PostsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
+    if blogger_signed_in?
       @post = Post.new
     else
-      redirect_to '/users/sign_in'
+      redirect_to '/bloggers/sign_in'
       @new
     end
   end
@@ -43,6 +43,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to "/user/#{current_user.id}/posts"
+    redirect_to "/bloggers/#{current_blogger.id}/posts"
   end
 end

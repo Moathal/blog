@@ -1,6 +1,6 @@
-<% if user_signed_in? %>
+<% if blogger_signed_in? %>
   <div class='d-flex align-items-center flex-column'>
-    <%= form_with(model: @comment, url: user_post_comments_path(@user, @post), local: true)  do |f| %>
+    <%= form_with(model: @comment, url: blogger_post_comments_path(@blogger, @post), local: true)  do |f| %>
       <div class='mb-3'>
         <%= f.text_area :text, size:"50x3",placeholder: 'Add Comment', name: "comment[text]", class:'form-control mx-2'%>
       </div>

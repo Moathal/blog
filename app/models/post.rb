@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'Blogger'
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   after_save :update_posts_num
