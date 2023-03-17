@@ -43,6 +43,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    @user = Blogger.find(@post.author_id)
+    @user.post_counter -= 1
+    @user.save
     redirect_to "/bloggers/#{current_blogger.id}/posts"
   end
 end
