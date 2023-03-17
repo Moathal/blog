@@ -89,7 +89,7 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: databaseFree
+  database: Budget-app_production
   username: postgres
   password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
   
