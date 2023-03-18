@@ -2,11 +2,14 @@
   <div class="card d-flex flex-column justify-content-center align-items-strech">
   
 <h2 class="card-title m-2">Sign up</h2>
+ <P class="m-1">Check your <em>inbox</em> and <em>spams</em> after registration if you couldn't find an email for confirmation don't hestate to <em>email us</em></p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "card-body d-flex flex-column justify-content-center form") do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   
+    <%= f.text_field :photo, autofocus: true, autocomplete: "name", placeholder: "Add Photo link", class: " input card-text m-2" %>
+    <small class="m-1">No enough storage for uploading we apologize :|</small>
     <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "Name", class: " input card-text m-2" %>
     <%= f.email_field :email, autofocus: true, autocomplete: " input email", placeholder: "Email", class: "input card-text m-2" %>
     <h3 class="title fs-4 m-2">About</h3>

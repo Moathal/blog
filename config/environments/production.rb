@@ -98,7 +98,7 @@ Rails.application.configure do
           port:                 587,
           domain:               'blogapp-ggjm.onrender.com',
           user_name:            'moathalsapp@gmail.com',
-          password:             'iybcpjzxyryxfppl',
+          password:             'jsmqvgoltwtauovj',
           authentication:       'plain',
           enable_starttls_auto: true,
           open_timeout:         5,
