@@ -14,7 +14,7 @@
           <% end %>
         <% end %>
       <% else %>
-        <% @posts.includes.each do |post|  %>
+        <% @posts.each do |post|  %>
         <%= link_to blogger_post_path(post.author_id, post.id, post_index: true), style: "white-space: break-spaces; height: min-content;", class: "navbar-brand p-0 m-0" do%>
             <div class="card d-flex flex-column m-1"><%= render partial: "posts/post", locals: { post: post } %></div>
           <% end %>
