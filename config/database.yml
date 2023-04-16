@@ -88,8 +88,8 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: Budget-app_production
-  username: databasefree_user
-  password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
+  url: postgres://databasefree_sf8a_user:G6YdPFlnHJMXkskscbwZj82m4tpJDlaB@dpg-cgtuo1t269vbmevu0t6g-a/databasefree_sf8a
+  database: databasefree_sf8a
+  username: databasefree_sf8a_user
+  password: G6YdPFlnHJMXkskscbwZj82m4tpJDlaB
   
